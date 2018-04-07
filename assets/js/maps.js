@@ -70,6 +70,10 @@ function reset() {
  document.getElementById('country').selectedIndex = "0";
  document.getElementById("autocomplete").value = "";
  document.getElementById('results-heading').innerHTML = "";
+ map.setZoom(2);
+ map.setCenter(countries["uk"].center);
+ map.componentRestrictions = { 'country': [] };
+
 }
 
 function initMap() {
@@ -101,10 +105,14 @@ function initMap() {
  places = new google.maps.places.PlacesService(map);
 
  autocomplete.addListener('place_changed', onPlaceChanged);
-
+ document.getElementById('foodRadio').addEventListener('change', onPlaceChanged);
+ document.getElementById('accomodationRadio').addEventListener('change', onPlaceChanged);
+ document.getElementById('touristRadio').addEventListener('change', onPlaceChanged);
  // Add a DOM event listener to react when the user selects a country.
  document.getElementById('country').addEventListener(
   'change', setAutocompleteCountry);
+ document.getElementById('reset-button').addEventListener("click", setAutocompleteCountry);
+
 }
 
 // When the user selects a city, get the place details for the city and
