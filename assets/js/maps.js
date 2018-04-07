@@ -222,10 +222,11 @@ function searchRestaurant() {
  });
 }
 
+// Search for attractions in the selected city, within the viewport of the map.
 function searchAttractions() {
  var search = {
   bounds: map.getBounds(),
-  types: ['cafe']
+  types: ['museum', 'art_gallery', 'park']
  };
 
  places.nearbySearch(search, function(results, status) {
