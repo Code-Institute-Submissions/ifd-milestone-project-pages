@@ -70,10 +70,6 @@ function reset() {
  document.getElementById('country').selectedIndex = "0";
  document.getElementById("autocomplete").value = "";
  document.getElementById('results-heading').innerHTML = "";
- initMap();
- map.panTo(place.geometry.location);
- map.setZoom(2);
-
 }
 
 function initMap() {
@@ -188,7 +184,7 @@ function searchHotel() {
 function searchRestaurant() {
  var search = {
   bounds: map.getBounds(),
-  types: ['restaurant','bar']
+  types: ['restaurant', 'bar']
  };
 
  places.nearbySearch(search, function(results, status) {
@@ -332,6 +328,7 @@ function showInfoWindow() {
 }
 
 // Load the place information into the HTML elements used by the info window.
+
 function buildIWContent(place) {
 
  document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
@@ -348,6 +345,8 @@ function buildIWContent(place) {
  else {
   document.getElementById('iw-phone-row').style.display = 'none';
  }
+
+
 
  // Assign a five-star rating to the hotel, using a black star ('&#10029;')
  // to indicate the rating the hotel has earned, and a white star ('&#10025;')
