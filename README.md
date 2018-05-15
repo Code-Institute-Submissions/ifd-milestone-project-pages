@@ -22,7 +22,13 @@
     There is some different technologies used in this project. Bootstrap was used for the structure of the web pages(html).
     Using Boostraps classes, tables and grids were made to give the website a nice layout with a responsive design. Google fonts were also 
     applied in the header to give font a Roboto or Exo font-family. Google maps api was used to manipulate and design an attractive map that 
-    shows all the locations of places that the user has searched for.
+    shows all the locations of places that the user has searched for. I used google maps api tutorials and used code from there originally. This code 
+    showed me hot to zoom in to places on events forced by the user. It also showed me to how to take information of discovered
+    places and then add that to html elements to display to the user.I then added to this code to make it more suited tothe brief and allow searching so be more interactive
+    and alow the user to query cities in more detail.Then after I was happy with the functionality of the map search I realised
+    the code was made with only javascript. I linked a jquery file and started to neaten things up by changing lots of 
+    javascript to jquery. I did however find this hard as I realised a lot of the google maps api code relied on javacript
+    so I was unable to fully change all my code.
 </p>
 
 <h3>Testing/Deployment</h3>
