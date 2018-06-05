@@ -39,6 +39,5 @@
     right. Once mistakes/changes were made with Chrome, the code was copied to the actual code to fix the issue permanently.
 </p>
 <p>
-    The website used code from google maps api documentation to create the initial structure of the website. The code was then added to 
-    to make it more functional and match it to the specifiction.
+    This website was deployed to github pages. It was very easy to set up as the website has been put in a githum repository from the start so all that had to be done was activate github pages and point the source to the master branch. 
 </p>

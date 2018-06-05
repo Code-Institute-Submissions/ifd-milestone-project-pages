@@ -196,8 +196,8 @@ function searchRestaurant() {
   if (status === google.maps.places.PlacesServiceStatus.OK) {
    clearResults();
    clearMarkers();
-   $('#results-heading').innerHTML("Results");
-   // Create a marker for each hotel found, and add letter.
+   document.getElementById('results-heading').innerHTML = "Results";
+   // Create a marker for each resteraunt found, and add letter.
    for (var i = 0; i < results.length; i++) {
     var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
     var markerIcon = MARKER_PATH + markerLetter + '.png';
@@ -207,7 +207,7 @@ function searchRestaurant() {
      animation: google.maps.Animation.DROP,
      icon: markerIcon
     });
-    // If the user clicks a hotel marker, show the details of that hotel
+    // If the user clicks a resteraunt marker, show the details of that hotel
     // in an info window.
     markers[i].placeResult = results[i];
     google.maps.event.addListener(markers[i], 'click', showInfoWindow);
@@ -230,7 +230,7 @@ function searchAttractions() {
    clearResults();
    clearMarkers();
    document.getElementById('results-heading').innerHTML = "Results";
-   // Create a marker for each hotel found, and
+   // Create a marker for each attraction found, and
    // assign a letter of the alphabetic to each marker icon.
    for (var i = 0; i < results.length; i++) {
     var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
@@ -241,7 +241,7 @@ function searchAttractions() {
      animation: google.maps.Animation.DROP,
      icon: markerIcon
     });
-    // If the user clicks a hotel marker, show the details of that hotel
+    // If the user clicks a attraction marker, show the details of that hotel
     // in an info window.
     markers[i].placeResult = results[i];
     google.maps.event.addListener(markers[i], 'click', showInfoWindow);
@@ -264,7 +264,7 @@ function clearMarkers() {
 // Set the country restriction based on user input.
 // Also center and zoom the map on the given country.
 function setAutocompleteCountry() {
- var country = document.getElementById('country').value;
+ var country = $('#country').val();
  if (country == 'all') {
   autocomplete.setComponentRestrictions({ 'country': [] });
   map.setCenter({ lat: 15, lng: 0 });
@@ -285,12 +285,14 @@ function dropMarker(i) {
  };
 }
 
+//Adds found results to table below map in webpage
 function addResult(result, i) {
  var results = document.getElementById('results');
  var markerLetter = String.fromCharCode('A'.charCodeAt(0) + (i % 26));
  var markerIcon = MARKER_PATH + markerLetter + '.png';
 
  var tr = document.createElement('tr');
+ //Creates the striped effect you see By making every odd number darker
  tr.style.backgroundColor = (i % 2 === 0 ? '#F0F0F0' : '#FFFFFF');
  tr.onclick = function() {
   google.maps.event.trigger(markers[i], 'click');
@@ -317,7 +319,7 @@ function clearResults() {
  }
 }
 
-// Get the place details for a hotel. Show the information in an info window,
+// Get the place details for a hotel,resteraunt,attraction. Show the information in an info window,
 // anchored on the marker for the hotel that the user selected.
 function showInfoWindow() {
  var marker = this;
@@ -353,9 +355,8 @@ function buildIWContent(place) {
 
 
 
- // Assign a five-star rating to the hotel, using a black star ('&#10029;')
- // to indicate the rating the hotel has earned, and a white star ('&#10025;')
- // for the rating points not achieved.
+ // Assign a five-star rating to the place
+ // to indicate the rating the place has earned, and a white star ('&#10025;')
  if (place.rating) {
   var ratingHtml = '';
   for (var i = 0; i < 5; i++) {
